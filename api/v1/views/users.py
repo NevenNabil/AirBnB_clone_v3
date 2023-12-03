@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""User module"""
+"""This is  User module"""
 from api.v1.views import app_views
 from flask import jsonify, abort, request, make_response
 from models import storage
@@ -11,7 +11,7 @@ from flasgger.utils import swag_from
 @app_views.route('/users', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/user/get.yml', methods=['GET'])
 def get_users():
-    """Retrieve all User objects"""
+    """It retrieves all User objects"""
     all_users = [obj.to_dict() for obj in storage.all(User).values()]
     return jsonify(all_users)
 
@@ -20,7 +20,7 @@ def get_users():
                  strict_slashes=False)
 @swag_from('documentation/user/get_id.yml', methods=['GET'])
 def get_user(user_id):
-    """Retrieve User by id"""
+    """It retrieves User by id"""
     user = storage.get(User, user_id)
 
     if user is None:
@@ -34,7 +34,7 @@ def get_user(user_id):
                  strict_slashes=False)
 @swag_from('documentation/user/delete.yml', methods=['DELETE'])
 def delete_user(user_id):
-    """Deletes a User object by id"""
+    """It deletes User object by id"""
     user = storage.get(User, user_id)
 
     if user is None:
@@ -50,7 +50,7 @@ def delete_user(user_id):
                  strict_slashes=False)
 @swag_from('documentation/user/post.yml', methods=['POST'])
 def create_user():
-    """ Creates User object"""
+    """It creates User object"""
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
 
@@ -71,7 +71,7 @@ def create_user():
                  strict_slashes=False)
 @swag_from('documentation/user/put.yml', methods=['PUT'])
 def update_user(user_id):
-    """Updates User object"""
+    """It updates a User object"""
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
 

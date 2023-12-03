@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""State module"""
+"""It states module"""
 from api.v1.views import app_views
 from flask import jsonify, abort, request, make_response
 from models import storage
@@ -11,7 +11,7 @@ from flasgger.utils import swag_from
 @app_views.route('/states', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/state/get.yml', methods=['GET'])
 def get_states():
-    """Retrieves the list of all State objects"""
+    """It retrieves list of all State objects"""
     all_states = [obj.to_dict() for obj in storage.all(State).values()]
     return jsonify(all_states)
 
@@ -20,7 +20,7 @@ def get_states():
                  strict_slashes=False)
 @swag_from('documentation/state/get_id.yml', methods=['GET'])
 def get_state(state_id):
-    """Retrieves a State object by id"""
+    """It retrieves State object by id"""
     state = storage.get(State, state_id)
 
     if state is None:
@@ -34,7 +34,7 @@ def get_state(state_id):
                  strict_slashes=False)
 @swag_from('documentation/state/delete.yml', methods=['DELETE'])
 def delete_state(state_id):
-    """Deletes a State objct by id"""
+    """It deletes State objct by id"""
     state = storage.get(State, state_id)
 
     if state is None:
@@ -50,7 +50,7 @@ def delete_state(state_id):
                  strict_slashes=False)
 @swag_from('documentation/state/post.yml', methods=['POST'])
 def create_state():
-    """Creates a new State object"""
+    """It creates new State object"""
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
 
@@ -68,7 +68,7 @@ def create_state():
                  strict_slashes=False)
 @swag_from('documentation/state/put.yml', methods=['PUT'])
 def update_state(state_id):
-    """Updates a State object"""
+    """It updates State object"""
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
 

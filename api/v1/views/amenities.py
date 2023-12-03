@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Amenity module"""
+"""This is amenity module"""
 from api.v1.views import app_views
 from flask import jsonify, abort, request, make_response
 from models import storage
@@ -20,7 +20,7 @@ def get_amenities():
                  strict_slashes=False)
 @swag_from('documentation/amenity/get_id.yml', methods=['GET'])
 def get_amenity(amenity_id):
-    """Retrieve amenity bby id"""
+    """This retrieve amenity bby id"""
     amenity = storage.get(Amenity, amenity_id)
 
     if amenity is None:
@@ -34,7 +34,7 @@ def get_amenity(amenity_id):
                  strict_slashes=False)
 @swag_from('documentation/amenity/delete.yml', methods=['DELETE'])
 def delete_amenity(amenity_id):
-    """Deletes a Amenity object by id"""
+    """This deletes a Amenity object by id"""
     amenity = storage.get(Amenity, amenity_id)
 
     if amenity is None:
@@ -50,7 +50,7 @@ def delete_amenity(amenity_id):
                  strict_slashes=False)
 @swag_from('documentation/amenity/post.yml', methods=['POST'])
 def create_amenity():
-    """Creates Amenity object"""
+    """It Creates Amenity object"""
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
 
@@ -68,7 +68,7 @@ def create_amenity():
                  strict_slashes=False)
 @swag_from('documentation/amenity/put.yml', methods=['PUT'])
 def update_amenity(amenity_id):
-    """Updates Amenity object"""
+    """It updates Amenity object"""
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
 

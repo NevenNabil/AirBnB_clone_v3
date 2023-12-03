@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Module that contains API endpoints
+This module that contains API endpoints
 """
 from models import storage
 from api.v1.views import app_views
@@ -9,13 +9,13 @@ from flask import jsonify
 
 @app_views.route('/status', strict_slashes=False)
 def status():
-    """Function that returns status in json format"""
+    """It is func that returns status in json format"""
     return jsonify({"status": "OK"})
 
 
 @app_views.route('/stats', strict_slashes=False)
 def count():
-    """Function that retrieves the number of each objects by type"""
+    """It is func that retrieves number of each objects by type"""
     return jsonify({"amenities": storage.count("Amenity"),
                     "cities": storage.count("City"),
                     "places": storage.count("Place"),

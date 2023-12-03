@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Place module"""
+"""This is a place module"""
 from api.v1.views import app_views
 from flask import jsonify, abort, request, make_response
 from models import storage
@@ -16,7 +16,7 @@ from flasgger.utils import swag_from
                  methods=['GET'], strict_slashes=False)
 @swag_from('documentation/places/get.yml', methods=['GET'])
 def get_places(city_id):
-    """Retrieve all Place objects in a city"""
+    """It retrieves all Place objects in city"""
     city = storage.get(City, city_id)
 
     if city is None:
@@ -30,7 +30,7 @@ def get_places(city_id):
                  strict_slashes=False)
 @swag_from('documentation/places/get_id.yml', methods=['GET'])
 def get_place(place_id):
-    """Retrieve Place object by id"""
+    """It Retrieves Place object by id"""
     place = storage.get(Place, place_id)
 
     if place is None:
@@ -44,7 +44,7 @@ def get_place(place_id):
                  strict_slashes=False)
 @swag_from('documentation/place/delete.yml', methods=['DELETE'])
 def delete_place(place_id):
-    """Deletes a Place object by id"""
+    """It deletes a Place object by id"""
     place = storage.get(Place, place_id)
 
     if place is None:
@@ -60,7 +60,7 @@ def delete_place(place_id):
                  strict_slashes=False)
 @swag_from('documentation/places/post.yml', methods=['POST'])
 def create_place(city_id):
-    """Create Place object"""
+    """It creates Place object"""
     city = storage.get(City, city_id)
 
     if city is None:
@@ -92,7 +92,7 @@ def create_place(city_id):
                  strict_slashes=False)
 @swag_from('documentation/places/put.yml', methods=['PUT'])
 def update_place(place_id):
-    """Update Place object"""
+    """It update Place object"""
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
 
@@ -114,7 +114,7 @@ def update_place(place_id):
                  strict_slashes=False)
 @swag_from('documentation/places/search.yml', methods=['POST'])
 def search_places():
-    """Search Place objects"""
+    """It searches Place objects"""
     if request.get_json() is None:
         return make_response(jsonify({"error": "Not a JSON"}), 400)
 

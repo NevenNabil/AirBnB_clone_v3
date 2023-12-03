@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Review module"""
+"""It reviews module"""
 from api.v1.views import app_views
 from flask import jsonify, abort, request, make_response
 from models import storage
@@ -14,7 +14,7 @@ from flasgger.utils import swag_from
                  methods=['GET'], strict_slashes=False)
 @swag_from('documentation/reviews/get.yml', methods=['GET'])
 def get_reviews(place_id):
-    """Retrieve Review objects"""
+    """It retrieve review objects"""
     place = storage.get(Place, place_id)
 
     if place is None:
@@ -28,7 +28,7 @@ def get_reviews(place_id):
                  strict_slashes=False)
 @swag_from('documentation/reviews/get_id.yml', methods=['GET'])
 def get_review(review_id):
-    """Retrieve Review object by id"""
+    """It retrieves review object by id"""
     review = storage.get(Review, review_id)
 
     if review is None:
@@ -42,7 +42,7 @@ def get_review(review_id):
                  strict_slashes=False)
 @swag_from('documentation/reviews/delete.yml', methods=['DELETE'])
 def delete_review(review_id):
-    """Delete Review object"""
+    """It delete review object"""
     review = storage.get(Review, review_id)
 
     if review is None:
@@ -58,7 +58,7 @@ def delete_review(review_id):
                  strict_slashes=False)
 @swag_from('documentation/reviews/post.yml', methods=['POST'])
 def create_review(place_id):
-    """Creates Review object"""
+    """It creates review object"""
     place = storage.get(Place, place_id)
 
     if place is None:
@@ -90,7 +90,7 @@ def create_review(place_id):
                  strict_slashes=False)
 @swag_from('documentation/reviews/put.yml', methods=['PUT'])
 def update_review(review_id):
-    """Updates Review object"""
+    """It updates review object"""
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
 

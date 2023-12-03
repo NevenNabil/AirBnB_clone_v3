@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""City module"""
+"""This city module"""
 from api.v1.views import app_views
 from flask import jsonify, abort, request, make_response
 from models import storage
@@ -13,7 +13,7 @@ from flasgger.utils import swag_from
                  methods=['GET'], strict_slashes=False)
 @swag_from('documentation/city/get.yml', methods=['GET'])
 def get_cities(state_id):
-    """Retrieve all City objects"""
+    """It retrieve all City objects"""
     state = storage.get(State, state_id)
 
     if state is None:
@@ -27,7 +27,7 @@ def get_cities(state_id):
                  strict_slashes=False)
 @swag_from('documentation/city/get_id.yml', methods=['GET'])
 def get_city(city_id):
-    """Retrieve City object by id"""
+    """It retrieves City object by id"""
     city = storage.get(City, city_id)
 
     if city is None:
@@ -57,7 +57,7 @@ def delete_city(city_id):
                  strict_slashes=False)
 @swag_from('documentation/city/post.yml', methods=['POST'])
 def create_city(state_id):
-    """Creates new City object"""
+    """It creates new City object"""
     state = storage.get(State, state_id)
 
     if state is None:
@@ -81,7 +81,7 @@ def create_city(state_id):
                  strict_slashes=False)
 @swag_from('documentation/city/put.yml', methods=['PUT'])
 def update_city(city_id):
-    """Updates City object"""
+    """It updates City object"""
     if not request.get_json():
         return make_response(jsonify({"error": "Not a JSON"}), 400)
 

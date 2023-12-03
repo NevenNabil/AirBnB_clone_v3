@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Place_amenity module"""
+"""This Place_amenity module"""
 from api.v1.views import app_views
 from flask import jsonify, abort
 from models import storage
@@ -13,7 +13,7 @@ from flasgger.utils import swag_from
                  strict_slashes=False)
 @swag_from('documentation/place_amenity/get_id.yml', methods=['GET'])
 def get_place_amenities(place_id):
-    """Retrieves all Place_amenity objects from a place"""
+    """It retrieves all Place_amenity objects from place"""
     place = storage.get(Place, place_id)
 
     if place is None:
@@ -28,7 +28,7 @@ def get_place_amenities(place_id):
                  methods=['DELETE'], strict_slashes=False)
 @swag_from('documentation/place_amenity/delete.yml', methods=['DELETE'])
 def delete_place_amenity(place_id, amenity_id):
-    """Deletes Place_amenity object from place"""
+    """It deletes Place_amenity object from place"""
     place = storage.get(Place, place_id)
 
     if place is None:
@@ -52,7 +52,7 @@ def delete_place_amenity(place_id, amenity_id):
                  methods=['POST'], strict_slashes=False)
 @swag_from('documentation/place_amenity/post.yml', methods=['POST'])
 def create_place_amenity(place_id, amenity_id):
-    """Create Place_amenity object"""
+    """It creates Place_amenity object"""
     place = storage.get(Place, place_id)
 
     if place is None:
